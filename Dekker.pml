@@ -1,7 +1,6 @@
 bool flag[2];
 bool turn;
-int ncrit[2];
-
+int ncrit;
 active [2] proctype mutex() {
 	pid i = _pid; pid j = 1 - _pid;
 	do
@@ -18,8 +17,8 @@ active [2] proctype mutex() {
 	   :: else -> break	
 	   od;
 	   /* entering critical section */
-           ncrit[i]++;
-	   ncrit[i]--;
+           ncrit++;
+	   ncrit--;
 	   /* exiting critical section */
 	   turn = j;
 	   flag[i] = false;
